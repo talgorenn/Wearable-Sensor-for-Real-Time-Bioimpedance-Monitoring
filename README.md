@@ -5,8 +5,6 @@ A wearable, non-invasive sensing system for estimating breast milk volume change
 **Project No.:** 25-1-1-3349 · **Students:** Tal Goren, Noy Kiselnik · **Supervisor:** Shachar Ashkenasy, GDL Lab
 **Carried out at:** Iby and Aladar Fleischman Faculty of Engineering, Tel Aviv University
 
-> Full write-up: [`Project Report.docx`](./Project%20Report.docx)
-
 ![System block diagram](docs/images/fig01_system_block_diagram.png)
 *Figure 1 — End-to-end pipeline: breast tissue → surface electrodes → MAX30009 BioZ analog front-end → BLE link → LightGBM regression → predicted milk volume change.*
 
@@ -113,7 +111,14 @@ Due to procurement constraints, the **MAX30001GEVKIT** was used instead for a co
 
 ## Software / ML Pipeline
 
-All three models share a common pipeline: for each replicate, impedance spectra from 4 electrode pairs (before/after a fluid-change event) are loaded, merged into one wide feature row per `(rep, t_i, t_j)` observation, and **split by replicate** (`GroupShuffleSplit` on `rep_id`) into train/val/test to prevent leakage.
+The project is implemented in Python: gradient-boosted trees via **LightGBM**, neural networks via **PyTorch**, data handling via **NumPy**/**pandas**, Cole-Cole fitting via **SciPy**'s nonlinear least-squares optimizer, and trained models/plots persisted with **joblib**/**Matplotlib**.
+
+### How the code works
+
+- **`data_loader.py`** walks the simulated dataset (one folder per replicate, named `rep_<id>_gauss_<g>a_s<seed>`), and for each replicate loads the four electrode pairs' `impedance_differences.csv` files, prefixes their columns by pair, and concatenates them side-by-side into a single wide row per `(rep, t_i, t_j)` observation — plus the target `fluid_diff_ml`. `load_sample()` grabs a random subset of replicates; `load_all()` parallelizes loading across all of them with a process pool.
+- **`features.py`** turns each raw row into model-ready features, in one of two modes: `"raw"` (the full real/imaginary Z1, Z2, ΔZ spectra at all 30 frequencies, per pair — 720 features) or `"cole_cole"` (fits the Cole-Cole model to Z1 and Z2 per pair via `cole_cole.py`, derives magnitude/phase/low-high-frequency-ratio summaries, computes before→after deltas, and appends the raw ΔZ spectrum alongside).
+- **`cole_cole.py`** fits `R0`, `R∞`, `fc`, `α` to a measured spectrum by nonlinear least squares, seeded from data-driven initial guesses (e.g. `fc` at the frequency of peak reactance) and returns NaNs if the fit fails.
+- **`train.py`**, **`mlp_train.py`**, **`cnn_train.py`** each: split the data **by replicate** (`GroupShuffleSplit` on `rep_id`, never by row) into train/val/test so no replicate leaks across splits, train their respective model (LightGBM with early stopping; MLP/CNN with Adam + `ReduceLROnPlateau` + early stopping) on `fluid_diff_ml`, then report RMSE/MAE/R² on the held-out test set and save the model, scaler, and predicted-vs-actual / feature-importance plots.
 
 | Model | File | Input | Notes |
 |---|---|---|---|
@@ -235,4 +240,4 @@ See [Usage](#software--ml-pipeline) above for the other models. GPU is used auto
 
 - MAX30001G Evaluation Kit datasheet, Analog Devices — https://www.analog.com/media/en/technical-documentation/data-sheets/max30001g.pdf
 - Nature Biomedical Engineering study on wireless bioimpedance monitoring of breast milk volume (single-frequency, 16 kHz, linear calibration) — the physiological basis this project builds on and extends with multi-frequency BIS + physics-informed ML.
-- Full reference list and appendices: [`Project Report.docx`](./Project%20Report.docx)
+- Full reference list and appendices are available in the project report.
