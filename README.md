@@ -111,9 +111,6 @@ Due to procurement constraints, the **MAX30001GEVKIT** was used instead for a co
 ![MAX30001G BioZ channel](docs/images/fig04_bioz_channel_datasheet.png)
 *Figure 4 — MAX30001G bioimpedance channel block diagram (source: MAX30001G datasheet, Analog Devices).*
 
-![Detailed BioZ signal chain](docs/images/fig_signal_chain_detailed.png)
-*Detailed signal chain: sinusoidal current injection (DRVP/DRVN) through a 220 nF DC-blocking capacitor, differential sensing (BIP/BIN), I/Q demodulation, PGA, 20-bit ADC, offline Cole-Cole feature extraction and model inference.*
-
 ## Software / ML Pipeline
 
 All three models share a common pipeline: for each replicate, impedance spectra from 4 electrode pairs (before/after a fluid-change event) are loaded, merged into one wide feature row per `(rep, t_i, t_j)` observation, and **split by replicate** (`GroupShuffleSplit` on `rep_id`) into train/val/test to prevent leakage.
@@ -142,7 +139,7 @@ py mlp_train.py --sample 200 --epochs 150
 py cnn_train.py --sample 200 --epochs 150
 ```
 
-> **Note:** the simulated dataset itself (the per-replicate `impedance_differences.csv` files consumed by `data_loader.py` / `features.py`) is not included in this repository due to size — it is expected under `data/data/` relative to `Code/`, or update `DATA_ROOT` / `_CANDIDATE_ROOTS` in `data_loader.py` and `features.py`. Trained models and plots are written to a local `output/` directory (currently hardcoded as an absolute path in each script — update `OUTPUT_DIR` before running).
+> **Note:** the simulated dataset that the models were trained on (the per-replicate `impedance_differences.csv` files consumed by `data_loader.py` / `features.py`) is **not included or documented in this repository, due to its size**. It is expected under `data/data/` relative to `Code/`, or update `DATA_ROOT` / `_CANDIDATE_ROOTS` in `data_loader.py` and `features.py` to point to it. Trained models and plots are written to a local `output/` directory (currently hardcoded as an absolute path in each script — update `OUTPUT_DIR` before running).
 
 ## Phantom Experiments
 
@@ -161,10 +158,7 @@ A dry potato sample was compared against a saline-soaked sample (saline raises e
 | 2 kHz | 199.6 | 130.3 | −34.7% |
 | 4 kHz | 103.2 | 36.2 | −64.9% |
 
-At low frequencies the two samples look nearly identical (electrode-electrolyte polarization dominates in this bipolar setup); as frequency rises, the saline sample's impedance drops sharply relative to the dry sample, as expected.
-
-![Potato Cole-Cole and Bode fit](docs/images/fig05_potato_dry_vs_saline_bode_cole.png)
-*Figure 5 — Potato phantom: Cole-Cole (Nyquist) and Bode magnitude fit, dry vs. saline. `fc`: 415 Hz (dry) → 343 Hz (saline), `α`: 0.94 → 1.00.*
+At low frequencies the two samples look nearly identical (electrode-electrolyte polarization dominates in this bipolar setup); as frequency rises, the saline sample's impedance drops sharply relative to the dry sample, as expected. The fitted Cole-Cole model gives `fc`: 415 Hz (dry) → 343 Hz (saline), `α`: 0.94 → 1.00.
 
 ### Steak phantom — sensitivity test (0.2 mL saline @ 4 kHz)
 
