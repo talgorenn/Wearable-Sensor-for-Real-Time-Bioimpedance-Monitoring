@@ -15,6 +15,9 @@ output/
 *.pkl
 *.pt
 
+# Project report (kept locally, not tracked in git)
+Project Report.docx
+
 # OS
 .DS_Store
 Thumbs.db
