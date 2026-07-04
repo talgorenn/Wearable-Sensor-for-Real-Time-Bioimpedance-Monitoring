@@ -246,5 +246,5 @@ See [Usage](#software--ml-pipeline) above for the other models. GPU is used auto
 ## References
 
 - MAX30001G Evaluation Kit datasheet, Analog Devices — https://www.analog.com/media/en/technical-documentation/data-sheets/max30001g.pdf
-- Nature Biomedical Engineering study on wireless bioimpedance monitoring of breast milk volume (single-frequency, 16 kHz, linear calibration) — the physiological basis this project builds on and extends with multi-frequency BIS + physics-informed ML.
+- Nature Biomedical Engineering study on wireless bioimpedance monitoring of breast milk volume (single-frequency, 16 kHz, linear calibration) — the physiological basis this project builds on and extends with multi-frequency BIS + physics-informed ML. https://www.nature.com/articles/s41551-025-01393-w
 
