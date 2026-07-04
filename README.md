@@ -163,7 +163,7 @@ A dry potato sample was compared against a saline-soaked sample (saline raises e
 | 2 kHz | 199.6 | 130.3 | −34.7% |
 | 4 kHz | 103.2 | 36.2 | −64.9% |
 
-At low frequencies the two samples look nearly identical (electrode-electrolyte polarization dominates in this bipolar setup); as frequency rises, the saline sample's impedance drops sharply relative to the dry sample, as expected. The fitted Cole-Cole model gives `fc`: 415 Hz (dry) → 343 Hz (saline), `α`: 0.94 → 1.00.
+At low frequencies the two samples look nearly identical (electrode-electrolyte polarization dominates in this bipolar setup); as frequency rises, the saline sample's impedance drops sharply relative to the dry sample, as expected. 
 
 ### Steak phantom — sensitivity test (0.2 mL saline @ 4 kHz)
 
