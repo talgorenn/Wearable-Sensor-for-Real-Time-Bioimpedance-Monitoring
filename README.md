@@ -201,7 +201,7 @@ Cole-Cole fit: `R0` 340→180 Ω, `R∞` 250→130 Ω, `fc` 1200→1800 Hz, `α`
 *Figure 7 — Steak phantom Nyquist and Bode-magnitude response, before vs. after 1 mL saline injection.*
 
 ![Steak phantom experimental setup](docs/images/exp_setup_fixed.jpg)
-*Steak phantom setup: MAX30001GEVKIT wired in a bipolar (2-electrode) configuration to Ag/AgCl electrodes on beef steak tissue in a petri dish.*
+*Steak phantom setup: MAX30001GEVKIT wired in a bipolar (2-electrode) configuration to Ag/AgCl electrodes on beef steak tissue.*
 
 ## Results
 
@@ -246,4 +246,4 @@ See [Usage](#software--ml-pipeline) above for the other models. GPU is used auto
 
 - MAX30001G Evaluation Kit datasheet, Analog Devices — https://www.analog.com/media/en/technical-documentation/data-sheets/max30001g.pdf
 - Nature Biomedical Engineering study on wireless bioimpedance monitoring of breast milk volume (single-frequency, 16 kHz, linear calibration) — the physiological basis this project builds on and extends with multi-frequency BIS + physics-informed ML.
-- Full reference list and appendices are available in the project report.
+
