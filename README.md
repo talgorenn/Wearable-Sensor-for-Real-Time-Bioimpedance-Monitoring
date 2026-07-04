@@ -165,15 +165,9 @@ A dry potato sample was compared against a saline-soaked sample (saline raises e
 
 At low frequencies the two samples look nearly identical (electrode-electrolyte polarization dominates in this bipolar setup); as frequency rises, the saline sample's impedance drops sharply relative to the dry sample, as expected. 
 
-![Steak phantom experimental setup](docs/images/exp_setup_fixed.jpg)
-*Steak phantom setup: MAX30001GEVKIT wired in a bipolar (2-electrode) configuration to Ag/AgCl electrodes on beef steak tissue in a petri dish.*
-
 ### Steak phantom — sensitivity test (0.2 mL saline @ 4 kHz)
 
 Data: [`Experiments/Sensitivity_Exp/`](Experiments/Sensitivity_Exp/) · [full report](Experiments/Sensitivity_Exp/sensitivity_report.html)
-
-![Saline injection into steak tissue](docs/images/injecting_fix.jpg)
-*Injecting 0.2 mL saline into the steak tissue between electrodes during the sensitivity test.*
 
 | Condition | Mean BioZ (Ω) |
 |---|---|
@@ -184,6 +178,9 @@ A **10.3%** impedance drop from a 0.2 mL injection — meeting the project's tar
 
 ![Steak sensitivity test](docs/images/fig06_steak_sensitivity_test.png)
 *Figure 6 — BioZ at 4 kHz, steak tissue, before/after 0.2 mL saline injection.*
+
+![Saline injection into steak tissue](docs/images/injecting_fix.jpg)
+*Injecting 0.2 mL saline into the steak tissue between electrodes during the sensitivity test.*
 
 ### Steak phantom — multi-frequency (1 mL saline, 125 Hz–128 kHz)
 
@@ -202,6 +199,9 @@ Cole-Cole fit: `R0` 340→180 Ω, `R∞` 250→130 Ω, `fc` 1200→1800 Hz, `α`
 
 ![Steak multi-frequency results](docs/images/fig07_steak_multifreq_nyquist_bode.png)
 *Figure 7 — Steak phantom Nyquist and Bode-magnitude response, before vs. after 1 mL saline injection.*
+
+![Steak phantom experimental setup](docs/images/exp_setup_fixed.jpg)
+*Steak phantom setup: MAX30001GEVKIT wired in a bipolar (2-electrode) configuration to Ag/AgCl electrodes on beef steak tissue in a petri dish.*
 
 ## Results
 
