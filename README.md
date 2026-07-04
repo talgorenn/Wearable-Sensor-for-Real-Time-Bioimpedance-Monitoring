@@ -2,7 +2,9 @@
 
 A wearable, non-invasive sensing system for estimating breast milk volume changes during breastfeeding, combining multi-frequency bioimpedance spectroscopy (BIS) hardware with a physics-informed machine learning pipeline.
 
-**Project No.:** 25-1-1-3349 · **Students:** Tal Goren, Noy Kiselnik · **Supervisor:** Shachar Ashkenasy, GDL Lab
+**Project No.:** 25-1-1-3349  
+**Students:** Tal Goren, Noy Kiselnik  
+**Supervisor:** Shachar Ashkenasy, GDL Lab
 **Carried out at:** Iby and Aladar Fleischman Faculty of Engineering, Tel Aviv University
 
 ![System block diagram](docs/images/fig01_system_block_diagram.png)
