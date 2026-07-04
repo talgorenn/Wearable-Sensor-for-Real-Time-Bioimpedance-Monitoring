@@ -1,8 +1,8 @@
-# Bioimpedance-Based Breast Milk Volume Estimation
+# Wearable Sensor for Real-Time Bioimpedance Monitoring
 
 A wearable, non-invasive sensing system for estimating breast milk volume changes during breastfeeding, combining multi-frequency bioimpedance spectroscopy (BIS) hardware with a physics-informed machine learning pipeline.
 
-**Project Number:** TBD · **Students:** TBD · **Supervisor:** TBD
+**Project No.:** 25-1-1-3349 · **Students:** Tal Goren, Noy Kiselnik · **Supervisor:** Shachar Ashkenasy, GDL Lab
 **Carried out at:** Iby and Aladar Fleischman Faculty of Engineering, Tel Aviv University
 
 > Full write-up: [`Project Report.docx`](./Project%20Report.docx)
