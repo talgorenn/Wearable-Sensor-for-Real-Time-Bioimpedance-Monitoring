@@ -4,8 +4,7 @@ A wearable, non-invasive sensing system for estimating breast milk volume change
 
 **Project No.:** 25-1-1-3349  
 **Students:** Tal Goren, Noy Kiselnik  
-**Supervisor:** Shachar Ashkenasy, GDL Lab
-**Carried out at:** Iby and Aladar Fleischman Faculty of Engineering, Tel Aviv University
+**Supervisor:** Shachar Ashkenasy, GDL Lab, Faculty of Engineering, Tel Aviv University
 
 ![System block diagram](docs/images/fig01_system_block_diagram.png)
 *Figure 1 — End-to-end pipeline: breast tissue → surface electrodes → MAX30009 BioZ analog front-end → BLE link → LightGBM regression → predicted milk volume change.*
